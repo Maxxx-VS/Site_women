@@ -18,6 +18,11 @@ data_db = [
     {'id': 3, 'title': 'Джулия Робертс', 'content': 'Биография Джулии Робертс', 'is_published': True},
 ]
 
+cats_db = [
+    {'id': 1, 'name': 'Актрисы'},
+    {'id': 2, 'name': 'Певицы'},
+    {'id': 3, 'name': 'Спортсменки'},
+]
 
 def index(request):
     # t = render_to_string('women/index.html')
@@ -26,6 +31,7 @@ def index(request):
         'title': 'Главная страница',
         'menu': menu,
         'posts': data_db,
+        'cat_selected': 0,
     }
     return render(request, 'women/index.html', context=data)
 
@@ -42,6 +48,18 @@ def contact(request):
     return HttpResponse('Обратная связь')
 def login(request):
     return HttpResponse('Авторизация')
+
+
+def show_category(request, cat_id):
+    data = {
+        'title': 'Отображение по рубикам',
+        'menu': menu,
+        'posts': data_db,
+        'cat_selected': cat_id,
+    }
+    return render(request, 'women/index.html', context=data)
+
+
 
 def page_not_found(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
