@@ -28,10 +28,14 @@ cats_db = [
 def index(request):
     # t = render_to_string('women/index.html')
     # return HttpResponse(t)
+
+    # posts = Women.objects.filter(is_published=1)
+    posts = Women.published.all()
+
     data = {
         'title': 'Главная страница',
         'menu': menu,
-        'posts': data_db,
+        'posts': posts,
         'cat_selected': 0,
     }
     return render(request, 'women/index.html', context=data)
