@@ -18,6 +18,7 @@ class Women(models.Model):
     is_published = models.BooleanField(choices=Status.choices, default=Status.DRAFT)
     cat = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='posts') # формируем свзь многие-к-одному
     tags = models.ManyToManyField('TagPost', blank=True, related_name='tags') # формируем свзь многие-к-многим
+    husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True, blank=True, related_name='woman')
 
     objects = models.Manager() # менеджер по умолчанию
     published = PublishedManager() # менеджер собственный
@@ -53,3 +54,10 @@ class TagPost(models.Model):
 
     def get_absolute_url(self): # формирует url адрес для каждой записи
         return reverse('tag', kwargs={'tag_slug':self.slug})
+
+class Husband(models.Model):
+    name = models.CharField(max_length=100)
+    age = models.IntegerField(null=True)
+
+    def __str__(self):
+        return self.name
