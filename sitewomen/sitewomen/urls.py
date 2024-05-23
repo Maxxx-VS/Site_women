@@ -10,3 +10,6 @@ urlpatterns = [
 ]
 
 handler404 = page_not_found
+
+admin.site.site_header = 'Панель администриривания' # заголовок админ панели
+admin.site.index_title = 'Извемтные женщины мира' # заголовок админ панели

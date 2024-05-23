@@ -27,6 +27,8 @@ class Women(models.Model):
         return self.title
 
     class Meta: # класс для сортировки
+        verbose_name = "Изестные женщины"
+        verbose_name_plural = "Изестные женщины"
         ordering = ['-time_create'] # метод сортировки
         indexes = [ # метод индексации
             models.Index(fields=['-time_create'])
