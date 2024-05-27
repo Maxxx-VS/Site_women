@@ -10,15 +10,15 @@ class Women(models.Model):
         DRAFT = 0, 'Черновик'
         PUBLISHED = 1, 'Опубликованно'
 
-    title = models.CharField(max_length=255)
-    slug = models.SlugField(max_length=255, unique=True, db_index=True) # unique делает поле уникальным, db_index делает поле индексируемым
-    content = models.TextField(blank=True) # blank позволяет не передавать в content записи
-    time_create = models.DateTimeField(auto_now_add=True) # auto_now_add автоматически заполняет поле в момент появления записи
-    time_update = models.DateTimeField(auto_now=True) # auto_now каждый раз меняется в момент записи
-    is_published = models.BooleanField(choices=Status.choices, default=Status.DRAFT)
-    cat = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='posts') # формируем свзь многие-к-одному
-    tags = models.ManyToManyField('TagPost', blank=True, related_name='tags') # формируем свзь многие-к-многим
-    husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True, blank=True, related_name='woman')
+    title = models.CharField(max_length=255, verbose_name='Заголовок')
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='Slug') # unique делает поле уникальным, db_index делает поле индексируемым
+    content = models.TextField(blank=True, verbose_name='Текст статьи') # blank позволяет не передавать в content записи
+    time_create = models.DateTimeField(auto_now_add=True, verbose_name='Время создания') # auto_now_add автоматически заполняет поле в момент появления записи
+    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения') # auto_now каждый раз меняется в момент записи
+    is_published = models.BooleanField(choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)), verbose_name='Статус')
+    cat = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='posts', verbose_name='Категории') # формируем свзь многие-к-одному
+    tags = models.ManyToManyField('TagPost', blank=True, related_name='tags', verbose_name='Тэги') # формируем свзь многие-к-многим
+    husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True, blank=True, related_name='woman', verbose_name='Муж')
 
     objects = models.Manager() # менеджер по умолчанию
     published = PublishedManager() # менеджер собственный
@@ -38,8 +38,12 @@ class Women(models.Model):
         return reverse('post', kwargs={'post_slug':self.slug})
 
 class Category(models.Model):
-    name = models.CharField(max_length=100, db_index=True)
+    name = models.CharField(max_length=100, db_index=True, verbose_name='Категория')
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
+
+    class Meta:
+        verbose_name = "Категория"
+        verbose_name_plural = "Категории"
 
     def __str__(self):
         return self.name
