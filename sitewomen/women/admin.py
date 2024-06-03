@@ -1,6 +1,22 @@
 from django.contrib import admin, messages
 from .models import Women, Category
 
+class MarriedFilter(admin.SimpleListFilter): # свой дополнительный фильт в панели фильтров
+    title = "Статус женщин"
+    parameter_name = 'status'
+
+    def lookups(self, request, model_admin):
+        return [
+            ('married', 'Замужен'),
+            ('single', 'Не замужен'),
+        ]
+
+    def queryset(self, request, queryset):
+        if self.value() == 'married':
+            return queryset.filter(husband__isnull=False)
+        elif self.value() == 'single':
+            return queryset.filter(husband__isnull=True)
+
 
 @admin.register(Women)
 class WomenAdmin(admin.ModelAdmin):
@@ -10,6 +26,8 @@ class WomenAdmin(admin.ModelAdmin):
     list_editable = ('is_published',) # какое поле можно редактировать в админ панели
     list_per_page = 5 # пагинация списка в админ панели
     actions = ['set_published', 'set_draft']
+    search_fields = ['title__startswith', 'cat__name'] # список полей по которому будет оуществлятся поиск
+    list_filter = [MarriedFilter, 'cat__name', 'is_published'] # панель для ильтрации (фильтр)
 
     @admin.display(description="Краткое описание", ordering='content') # ordering='content' добавляет сортировку пользовательских полей
     def brief_info(self, women: Women): # добавили поле в админ панели
