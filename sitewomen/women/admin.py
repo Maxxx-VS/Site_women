@@ -20,6 +20,11 @@ class MarriedFilter(admin.SimpleListFilter): # свой дополнительн
 
 @admin.register(Women)
 class WomenAdmin(admin.ModelAdmin):
+    fields = ['title', 'slug', 'content', 'cat', 'husband', 'tags'] # здесь определены толькто те поля, которые надо отображать - в таком порядке
+    # exclude = ['tags', 'is_published'] # исключает поля, которые не надо отображать
+    # readonly_fields = ['slug'] # делаем поля только для чтения (не редактируемые)
+    prepopulated_fields = {'slug': ('title', )} # для автоматического создания слага
+    filter_horizontal = ['tags'] # меняет отображение поля ТЭГИ
     list_display = ('title', 'time_create', 'is_published', 'cat', 'brief_info') # содержит список всех полей для отображения в админ панели
     list_display_links = ('title',) # указывются поля, которые стаут кликабельными в админ панели
     ordering = ['-time_create', 'title'] # порядок сортировки для админ панели
@@ -28,6 +33,7 @@ class WomenAdmin(admin.ModelAdmin):
     actions = ['set_published', 'set_draft']
     search_fields = ['title__startswith', 'cat__name'] # список полей по которому будет оуществлятся поиск
     list_filter = [MarriedFilter, 'cat__name', 'is_published'] # панель для ильтрации (фильтр)
+
 
     @admin.display(description="Краткое описание", ordering='content') # ordering='content' добавляет сортировку пользовательских полей
     def brief_info(self, women: Women): # добавили поле в админ панели
