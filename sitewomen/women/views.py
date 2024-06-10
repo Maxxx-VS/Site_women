@@ -50,7 +50,7 @@ def show_post(request, post_slug):
     return render(request, 'women/post.html', data)
 
 def addpage(request):
-    return HttpResponse('Добавление статьи')
+    return render(request, 'women/addpage.html', {'menu': menu, 'title': 'Добавление статьи'})
 
 def contact(request):
     return HttpResponse('Обратная связь')
