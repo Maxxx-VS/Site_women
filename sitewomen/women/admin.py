@@ -1,7 +1,10 @@
 from django.contrib import admin, messages
+from django.utils.safestring import mark_safe
+
 from .models import Women, Category
 
-class MarriedFilter(admin.SimpleListFilter): # свой дополнительный фильт в панели фильтров
+
+class MarriedFilter(admin.SimpleListFilter):
     title = "Статус женщин"
     parameter_name = 'status'
 
@@ -20,34 +23,36 @@ class MarriedFilter(admin.SimpleListFilter): # свой дополнительн
 
 @admin.register(Women)
 class WomenAdmin(admin.ModelAdmin):
-    fields = ['title', 'slug', 'content', 'cat', 'husband', 'tags'] # здесь определены толькто те поля, которые надо отображать - в таком порядке
-    # exclude = ['tags', 'is_published'] # исключает поля, которые не надо отображать
-    # readonly_fields = ['slug'] # делаем поля только для чтения (не редактируемые)
-    prepopulated_fields = {'slug': ('title', )} # для автоматического создания слага
-    filter_horizontal = ['tags'] # меняет отображение поля ТЭГИ
-    list_display = ('title', 'time_create', 'is_published', 'cat', 'brief_info') # содержит список всех полей для отображения в админ панели
-    list_display_links = ('title',) # указывются поля, которые стаут кликабельными в админ панели
-    ordering = ['-time_create', 'title'] # порядок сортировки для админ панели
-    list_editable = ('is_published',) # какое поле можно редактировать в админ панели
-    list_per_page = 5 # пагинация списка в админ панели
+    fields = ['title', 'slug', 'content', 'photo', 'post_photo', 'cat', 'husband', 'tags']
+    # exclude = ['tags', 'is_published']
+    readonly_fields = ['post_photo']
+    prepopulated_fields = {"slug": ("title", )}
+    # filter_horizontal = ['tags']
+    filter_vertical = ['tags']
+    list_display = ('title', 'post_photo', 'time_create', 'is_published', 'cat')
+    list_display_links = ('title', )
+    ordering = ['-time_create', 'title']
+    list_editable = ('is_published', )
     actions = ['set_published', 'set_draft']
-    search_fields = ['title__startswith', 'cat__name'] # список полей по которому будет оуществлятся поиск
-    list_filter = [MarriedFilter, 'cat__name', 'is_published'] # панель для ильтрации (фильтр)
+    search_fields = ['title__startswith', 'cat__name']
+    list_filter = [MarriedFilter, 'cat__name', 'is_published']
+    save_on_top = True
 
-
-    @admin.display(description="Краткое описание", ordering='content') # ordering='content' добавляет сортировку пользовательских полей
-    def brief_info(self, women: Women): # добавили поле в админ панели
-        return f"Описание {len(women.content)} символов."
+    @admin.display(description="Изображение", ordering='content')
+    def post_photo(self, women: Women):
+        if women.photo:
+            return mark_safe(f"<img src='{women.photo.url}' width=50>")
+        return "Без фото"
 
     @admin.action(description="Опубликовать выбранные записи")
-    def set_published(self, request, queryset): # добавили в поле Действия: действие
+    def set_published(self, request, queryset):
         count = queryset.update(is_published=Women.Status.PUBLISHED)
         self.message_user(request, f"Изменено {count} записей.")
 
     @admin.action(description="Снять с публикации выбранные записи")
-    def set_draft(self, request, queryset): # добавили в поле Действия: действие
+    def set_draft(self, request, queryset):
         count = queryset.update(is_published=Women.Status.DRAFT)
-        self.message_user(request, f"{count} записей снято с публикации!", messages.WARNING)
+        self.message_user(request, f"{count} записей сняты с публикации!", messages.WARNING)
 
 
 @admin.register(Category)
@@ -55,5 +60,3 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id', 'name')
 
-
-# admin.site.register(Women, WomenAdmin)

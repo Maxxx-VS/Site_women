@@ -1,4 +1,3 @@
-
 class FourDigitYearConverter:
     regex = "[0-9]{4}"
 

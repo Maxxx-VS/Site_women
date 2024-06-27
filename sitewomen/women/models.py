@@ -3,11 +3,8 @@ from django.db import models
 from django.template.defaultfilters import slugify
 from django.urls import reverse
 
-class PublishedManager(models.Manager): # класс для отображения только опубликованных женщин
-    def get_queryset(self):
-        return super().get_queryset().filter(is_published=Women.Status.PUBLISHED)
 
-def translit_to_eng(s: str) -> str: # костыль для формирования слага на английском при русском заголовке
+def translit_to_eng(s: str) -> str:
     d = {'а': 'a', 'б': 'b', 'в': 'v', 'г': 'g', 'д': 'd',
          'е': 'e', 'ё': 'yo', 'ж': 'zh', 'з': 'z', 'и': 'i', 'к': 'k',
          'л': 'l', 'м': 'm', 'н': 'n', 'о': 'o', 'п': 'p', 'р': 'r',
@@ -16,50 +13,58 @@ def translit_to_eng(s: str) -> str: # костыль для формирован
 
     return "".join(map(lambda x: d[x] if d.get(x, False) else x, s.lower()))
 
+
+class PublishedManager(models.Manager):
+    def get_queryset(self):
+        return super().get_queryset().filter(is_published=Women.Status.PUBLISHED)
+
+
 class Women(models.Model):
     class Status(models.IntegerChoices):
         DRAFT = 0, 'Черновик'
-        PUBLISHED = 1, 'Опубликованно'
+        PUBLISHED = 1, 'Опубликовано'
 
-    title = models.CharField(max_length=255, verbose_name='Заголовок')
-    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name='Slug', # unique делает поле уникальным, db_index делает поле индексируемым
-                            validators=[
-                                MinLengthValidator(5, message="Минимум 5 символов"),
-                                MaxLengthValidator(100, message="Максимум 100 символов"),
-                            ])
-
-    content = models.TextField(blank=True, verbose_name='Текст статьи') # blank позволяет не передавать в content записи
-    time_create = models.DateTimeField(auto_now_add=True, verbose_name='Время создания') # auto_now_add автоматически заполняет поле в момент появления записи
-    time_update = models.DateTimeField(auto_now=True, verbose_name='Время изменения') # auto_now каждый раз меняется в момент записи
+    title = models.CharField(max_length=255, verbose_name="Заголовок")
+    slug = models.SlugField(max_length=255, unique=True, db_index=True, verbose_name="Slug",                           validators=[
+                               MinLengthValidator(5, message="Минимум 5 символов"),
+                               MaxLengthValidator(100, message="Максимум 100 символов"),
+                           ])
+    photo = models.ImageField(upload_to="photos/%Y/%m/%d/", default=None,
+                              blank=True, null=True, verbose_name="Фото")
+    content = models.TextField(blank=True, verbose_name="Текст статьи")
+    time_create = models.DateTimeField(auto_now_add=True, verbose_name="Время создания")
+    time_update = models.DateTimeField(auto_now=True, verbose_name="Время изменения")
     is_published = models.BooleanField(choices=tuple(map(lambda x: (bool(x[0]), x[1]), Status.choices)),
-                                       default=Status.DRAFT, verbose_name='Статус')
-    cat = models.ForeignKey('Category', on_delete=models.CASCADE, related_name='posts', verbose_name='Категории') # формируем свзь многие-к-одному
-    tags = models.ManyToManyField('TagPost', blank=True, related_name='tags', verbose_name='Тэги') # формируем свзь многие-к-многим
-    husband = models.OneToOneField('Husband', on_delete=models.SET_NULL, null=True, blank=True, related_name='woman', verbose_name='Муж')
+                                       default=Status.DRAFT, verbose_name="Статус")
+    cat = models.ForeignKey('Category', on_delete=models.PROTECT, related_name='posts', verbose_name="Категории")
+    tags = models.ManyToManyField('TagPost', blank=True, related_name='tags', verbose_name="Теги")
+    husband = models.OneToOneField('Husband', on_delete=models.SET_NULL,
+                                   null=True, blank=True, related_name='wuman', verbose_name="Муж")
 
-    objects = models.Manager() # менеджер по умолчанию
-    published = PublishedManager() # менеджер собственный
+    objects = models.Manager()
+    published = PublishedManager()
 
     def __str__(self):
         return self.title
 
-    class Meta: # класс для сортировки
-        verbose_name = "Изестные женщины"
-        verbose_name_plural = "Изестные женщины"
-        ordering = ['-time_create'] # метод сортировки
-        indexes = [ # метод индексации
+    class Meta:
+        verbose_name = "Известные женщины"
+        verbose_name_plural = "Известные женщины"
+        ordering = ['-time_create']
+        indexes = [
             models.Index(fields=['-time_create'])
         ]
 
-    def get_absolute_url(self): # формирует url адрес для каждой записи
-        return reverse('post', kwargs={'post_slug':self.slug})
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_slug': self.slug})
 
-    # def save(self, *args, **kwargs): # формирование автоматического slug
+    # def save(self, *args, **kwargs):
     #     self.slug = slugify(translit_to_eng(self.title))
     #     super().save(*args, **kwargs)
 
+
 class Category(models.Model):
-    name = models.CharField(max_length=100, db_index=True, verbose_name='Категория')
+    name = models.CharField(max_length=100, db_index=True, verbose_name="Категория")
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
 
     class Meta:
@@ -72,6 +77,7 @@ class Category(models.Model):
     def get_absolute_url(self):
         return reverse('category', kwargs={'cat_slug': self.slug})
 
+
 class TagPost(models.Model):
     tag = models.CharField(max_length=100, db_index=True)
     slug = models.SlugField(max_length=255, unique=True, db_index=True)
@@ -79,8 +85,8 @@ class TagPost(models.Model):
     def __str__(self):
         return self.tag
 
-    def get_absolute_url(self): # формирует url адрес для каждой записи
-        return reverse('tag', kwargs={'tag_slug':self.slug})
+    def get_absolute_url(self):
+        return reverse('tag', kwargs={'tag_slug': self.slug})
 
 
 class Husband(models.Model):

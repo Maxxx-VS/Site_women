@@ -1,5 +1,6 @@
 {% load static %}
 {% load women_tags %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,19 +32,18 @@
 <!-- Sidebar слева -->
 	<td valign="top" class="left-chapters">
 	<ul id="leftchapters">
-
 		{% if cat_selected == 0 %}
 		<li class="selected">Все категории</li>
 		{% else %}
-		<li><a href="{% url 'home'  %}">Все категории</a></li>
+		<li><a href="{% url 'home' %}">Все категории</a></li>
 		{% endif %}
+
 		{% show_categories cat_selected %}
 
 		<li class="share">
 		<p>Наш канал</p>
 		<a class="share-yt" href="https://www.youtube.com/channel/UClJzWfGWuGJL2t-3dYKcHTA/playlists" target="_blank" rel="nofollow"></a>
 		</li>
-
 
 		<li>{% show_all_tags %}</li>
 	</ul>
@@ -66,7 +66,7 @@
 <!-- Footer -->
 <tr><td valign=top>
 	<div id="footer">
-		<p>&copy; 2024 "Это проект сайта для изучения Django. М.В. Высочанский"</p>
+		<p>&copy; 2023 Частичное или полное копирование информации с данного сайта для распространения на других ресурсах, в том числе и бумажных, строго запрещено.</p>
 	</div>
 </td></tr></table>
 <!-- Конец footer'а и страницы -->
