@@ -17,7 +17,7 @@ class WomenHome(DataMixin, ListView):
     context_object_name = 'posts'
     title_page = 'Главная страница'
     cat_selected = 0
-    paginate_by = 3
+
 
     def get_queryset(self):
         return Women.published.all().select_related('cat')
@@ -70,6 +70,7 @@ class WomenCategory(DataMixin, ListView):
     template_name = 'women/index.html'
     context_object_name = 'posts'
     allow_empty = False
+
 
     def get_queryset(self):
         return Women.published.filter(cat__slug=self.kwargs['cat_slug']).select_related("cat")
