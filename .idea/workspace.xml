@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7b597322-fd66-4f0b-8f88-91804d9b8801" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/django_site_women.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/anastasiya-eshli.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/andjelina-joli.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/ariana-grande.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/beionce.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/ekaterina-guseva.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/elen-hog.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/jennifer-lourens.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/julia-roberts.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/keti-perri.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/madonna.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/margo-robbi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/rianna.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/shakira.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/sharapova.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/photos/uma-turman.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/db.sqlite3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/anastasiya-eshli.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/andjelina-joli.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/ariana-grande.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/ariana-grande_I5j6hDB.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/beionce.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/ekaterina-guseva.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/jennifer-lourens.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/julia-roberts.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/keti-perri.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/margo-robbi.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/rianna_qZ3rB7H.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/shakira.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/media/photos/2023/09/11/uma-turman.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/asgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/settings.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/sitewomen/wsgi.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/uploads/Екатерина Гусева.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/context_processors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/migrations/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/templates/users/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/users/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/admin.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/apps.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/converters.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/forms.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/models.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/static/women/css/styles.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/static/women/images/blockquote.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/static/women/images/btn_yt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/static/women/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/static/women/images/main.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/static/women/images/share_yt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/static/women/images/smallmenu.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/addpage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/includes/nav.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/list_categories.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/list_tags.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templates/women/post.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/templatetags/women_tags.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/tests.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/urls.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/utils.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sitewomen/women/views.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2jHrNmI2x0O9zFjHUhd9XMFaL3a" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Python.urls.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/hot-z/PYTHON PROJECTS/django_site_women/manage.py"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="Run" type="PythonConfigurationType" factoryName="Python">
+      <module name="django_site_women" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="Python 3.11 (django_site_women)" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\hot-z\PYTHON PROJECTS\django_site_women" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/manage.py" />
+      <option name="PARAMETERS" value="runserver" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-67fca87a943a-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.11799.259" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7b597322-fd66-4f0b-8f88-91804d9b8801" name="Changes" comment="" />
+      <created>1721054808693</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1721054808693</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
